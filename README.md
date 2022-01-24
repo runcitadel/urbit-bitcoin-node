@@ -6,8 +6,12 @@ Since Umbrel ships with `bitcoind` and `electrs` out of the box, the only remain
 
 The Docker Compose file is included for reference. Most importantly it imports env vars that describe the `bitcoind` and `electrs` servers to communicate with. This package does not need persistent storage.
 
-Once you've got it running, try curling it:
+Once running on a fully synced Umbrel, you can connect your ship to it like this:
 
 ```
-$> curl http://ip.address.here:50002/addresses/info/bc1qm7cegwfd0pvv9ypvz5nhstage00xkxevtrpshc
+dojo> |rein %bitcoin [& %btc-provider]
+dojo> =network %main
+dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://addresshere:50002' network]
 ```
+
+If it's working, you will be able to see a new block announcement in your dojo.

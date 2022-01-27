@@ -5,8 +5,8 @@ RUN apt-get update && \
   apt-get install -y xz-utils python && \
   rm -rf /var/lib/apt/lists/*
 
-RUN curl https://nodejs.org/dist/v14.18.1/node-v14.18.1-linux-x64.tar.xz --output node-v14.18.1-linux-x64.tar.xz
-RUN tar xvf node-v14.18.1-linux-x64.tar.xz
+RUN curl https://nodejs.org/dist/v14.18.1/node-v14.18.1-linux-arm64.tar.xz --output node-v14.18.1-linux-arm64.tar.xz
+RUN tar xvf node-v14.18.1-linux-arm64.tar.xz
 
 # urbit-bitcoin-rpc Builder container
 FROM buildpack-deps:bullseye as urbit-rpc-builder
@@ -25,7 +25,6 @@ ARG USERNAME=user
 RUN apt-get update && \
   apt-get install -y iproute2 sudo && \
   rm -rf /var/lib/apt/lists/*
-RUN apt-get install -y netcat curl
 
 # Allow the new user write access to /etc/hosts
 RUN groupadd -g $GID -o $USERNAME && \
@@ -33,7 +32,7 @@ RUN groupadd -g $GID -o $USERNAME && \
   echo "$USERNAME    ALL=(ALL:ALL) NOPASSWD: /usr/bin/append-to-hosts" | tee -a /etc/sudoers
 
 # Copy files from the builder containers
-COPY --from=nodejs-builder /node-v14.18.1-linux-x64/ /usr/local/
+COPY --from=nodejs-builder /node-v14.18.1-linux-arm64/ /usr/local/
 COPY --from=urbit-rpc-builder /urbit-bitcoin-rpc/* /
 COPY --from=urbit-rpc-builder /urbit-bitcoin-rpc/src /src
 

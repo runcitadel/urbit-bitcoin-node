@@ -5,16 +5,20 @@ const BigNumber = require("bignumber.js");
 const request = require("request");
 
 //var electrsHost = 'electrs';
-const btcCookiePass = process.env.BTC_RPC_COOKIE_PASS;
-const btcRpcPort = process.env.BTC_RPC_PORT;
-const btcIp = process.env.BITCOIN_IP;
+const btcRpcPort = process.env.$BITCOIN_RPC_PORT;
+const btcIp = process.env.$BITCOIN_IP;
+const btcPassword = process.env.$BITCOIN_RPC_PASS;
 const btcRpcUrl = `${btcIp}:${btcRpcPort}/`;
-const electrsHost = process.env.ELECTRS_HOST;
-const electrsPort = process.env.ELECTRS_PORT;
-const btcRpcUser = process.env.BITCOIN_RPC_USER;
-const btcRpcPass = process.env.BITCOIN_RPC_PASSWORD;
-const btcRpcAuth = process.env.BITCOIN_RPC_AUTH;
+const electrsHost = process.env.$ELECTRUM_IP;
+const electrsPort = process.env.$ELECTRUM_PORT;
+const btcRpcAuth = `umbrel:${btcPassword}`;
 // console.log(`INFO PROXY: btc rpc pass: ${btcCookiePass}`)
+console.log(`Bitcoin IP: ${btcIp}`);
+console.log(`Bitcoin port: ${btcRpcPort}`);
+console.log(`Bitcoin URL: ${btcRpcUrl}`);
+console.log(`Electrs IP: ${electrsHost}`);
+console.log(`Electrs port: ${electrsPort}`);
+console.log(`Bitcoin RPC auth: ${btcRpcAuth}`);
 console.log(`INFO PROXY: Electrs host: ${electrsHost}:${electrsPort}`);
 
 const network =

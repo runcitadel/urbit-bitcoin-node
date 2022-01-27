@@ -8,7 +8,6 @@ RUN apt-get update && \
 RUN curl https://nodejs.org/dist/v14.18.1/node-v14.18.1-linux-arm64.tar.xz --output node-v14.18.1-linux-arm64.tar.xz
 RUN tar xvf node-v14.18.1-linux-arm64.tar.xz
 
-
 # urbit-bitcoin-rpc Builder container
 FROM buildpack-deps:bullseye as urbit-rpc-builder
 
@@ -18,9 +17,6 @@ RUN git clone -b master https://github.com/urbit/urbit-bitcoin-rpc.git urbit-bit
 # urbit-bitcoin-node container
 FROM debian:bullseye-slim
 
-# Run bitcoin as a non-privileged user to avoid permissions issues with volume mounts,
-# amount other things.
-#
 # These buildargs can be set during container build time with --build-arg UID=[uid]
 ARG UID=1000
 ARG GID=1000
@@ -29,10 +25,6 @@ ARG USERNAME=user
 RUN apt-get update && \
   apt-get install -y iproute2 sudo && \
   rm -rf /var/lib/apt/lists/*
-
-# used to set internal docker domain while still not running as root user.
-COPY ./bin/append-to-hosts.sh /usr/bin/append-to-hosts
-RUN chmod +x /usr/bin/append-to-hosts
 
 # Allow the new user write access to /etc/hosts
 RUN groupadd -g $GID -o $USERNAME && \

@@ -42,7 +42,7 @@ On a fully synced Umbrel, you can connect your ship to it like this:
 ```
 dojo> |rein %bitcoin [& %btc-provider]
 dojo> =network %main
-dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://addresshere:50002' network]
+dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://umbrel.local:50002' network]
 ```
 
 If it's working, you will be able to see a new block announcement in your dojo.

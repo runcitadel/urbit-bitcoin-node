@@ -8,7 +8,7 @@ The Docker Compose file is included for reference. Most importantly it imports e
 
 ### Installation
 
-Make a file on your umbrel called `/home/umbrel/apps/urbit-btc-node/docker-compose.yml`
+Make a file on your umbrel called `~/umbrel/apps/urbit-btc-node/docker-compose.yml`
 
 Paste the following into it:
 

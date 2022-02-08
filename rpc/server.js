@@ -5,12 +5,12 @@ const BigNumber = require("bignumber.js");
 const request = require("request");
 
 //var electrsHost = 'electrs';
-const btcRpcPort = process.env.$BITCOIN_RPC_PORT;
-const btcIp = process.env.$BITCOIN_IP;
-const btcPassword = process.env.$BITCOIN_RPC_PASS;
+const btcRpcPort = process.env.BITCOIN_RPC_PORT;
+const btcIp = process.env.BITCOIN_IP;
+const btcPassword = process.env.BITCOIN_RPC_PASS;
 const btcRpcUrl = `${btcIp}:${btcRpcPort}/`;
-const electrsHost = process.env.$ELECTRUM_IP;
-const electrsPort = process.env.$ELECTRUM_PORT;
+const electrsHost = process.env.ELECTRUM_IP;
+const electrsPort = process.env.ELECTRUM_PORT;
 const btcRpcAuth = `umbrel:${btcPassword}`;
 // console.log(`INFO PROXY: btc rpc pass: ${btcCookiePass}`)
 console.log(`Bitcoin IP: ${btcIp}`);

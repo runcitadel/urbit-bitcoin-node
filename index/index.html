@@ -1,0 +1,132 @@
+<!doctype html>
+<head>
+<title>Urbit Bitcoin Connector</title>
+<style>
+body {
+    font-family: monospace;
+    max-width: 40em;
+}
+
+.box {
+    border: 1px solid black;
+    margin: 1em;
+    padding: 1em;
+}
+
+.indent {
+    margin-left: 1em;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.wrap: {
+    overflow: hidden;
+    position: relative;
+}
+.bg-img {
+    background-image:url('/logo.png');
+    background-size: contain;
+    align: left;
+    background-repeat:no-repeat;
+}
+
+.title {
+    border: 2px solid black;
+    margin: 1em;
+    padding: 1em;
+    text-align: center;
+}
+
+h1 {
+    color: #ffffff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+
+#submit {
+    background-color: #fff;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-style: outset;
+    border-radius: 2px solid #000;
+    border-color: #000;
+    color: #000;
+    font-family: monospace;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    border:none;
+}
+pre code {
+  display: block;
+  background: #D3D3D3;
+  white-space: pre;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: auto;
+  max-width: 100%;
+  min-width: 100px;
+  padding: 0;
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+<div class="bg-img">
+<div class="title">
+<h1>Urbit Bitcoin Connector</h1>
+</div></div></div>
+
+<div>
+<div class="box">
+	<p><b>This app will allow you to connect your Urbit's Bitcoin wallet to your Umbrel.</b></p>
+	<p>Urbit's Bitcoin wallet talks to the blockchain like this:</p>
+	<p><pre><code>[%btc-wallet] <--> [%btc-provider] <--> [Full node]</code></pre></p>
+	<p>You need to connect %btc-wallet to a configured provider before you can use it. %btc-wallet and %btc-provider may or may not be on the same ship.</p>
+</div></div>
+
+<div><div class="box">
+		<p><b>Connecting your ship</b></p>
+		<p>First configure your provider:</p>
+		<p><ul>
+			<li>Open the dojo on your ship ('Terminal')</li>
+			<li>Enter the following commands:</li>
+		</ul>
+			<pre><code>dojo> |rein %bitcoin [& %btc-provider]
+dojo> =network %main
+dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://127.0.0.1:55555' network]</code></pre>
+		You should see a new block announcement in the dojo. (If your ship is on another host, change the IP address.)</p>
+		<p><ul><li>Next, go to your Bitcoin wallet in your Urbit's web UI.</li>
+			<li>Configure your provider by entering the @p (ship name) of the provider you just configured.</li>
+			<li>Enter your xPub from <a href="https://bridge.urbit.org">Bridge</a> or an <a href="https://blog.blockonomics.co/how-to-find-your-xpub-key-with-these-8-popular-bitcoin-wallets-ce8ea665ffdc">external wallet</a>.
+</div></div>
+
+<div><div class="box">
+		<p><b>Whitelisting clients</b></p>
+		<p>By default, only your provider's @p will be whitelisted for use. You can whitelist any other ship or groups of ships using the following commands.</p>
+		<pre><code>:: Individual ships ::
+dojo> :btc-provider +bitcoin!btc-provider/command [%add-whitelist [%users users=(sy ~[~wallet-hodler])]]
+
+:: Group members (provider ship must be a member) ::
+dojo> :btc-provider +bitcoin!btc-provider/command [%add-whitelist [%groups groups=(sy ~[[~sampel %group-name]])]]
+
+:: %kids ::
+dojo> :btc-provider +bitcoin!btc-provider/command [%add-whitelist %kids ~]
+
+:: Public whitelisting ::
+dojo> :btc-provider +bitcoin!btc-provider/command [%add-whitelist %public ~]</pre></code>
+		<p></p>
+</div></div>
+
+<div><div class="box">
+			For support, file an issue on <a href="https://github.com/yapishu/urbit-bitcoin-node">GitHub</a> or join ~matwet/networked-subject on Urbit.
+</div></div>
+<div><div class="title">
+    <h2 style="text-align:center;">(~)</h2>
+    </div></div>
+</body>

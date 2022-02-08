@@ -4,7 +4,7 @@ ARG GID=1000
 ARG username=umbrel
 RUN apt-get update && apt-get install -y curl
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash 
-RUN apt-get update && apt-get install -y vim procps nginx nodejs npm git sudo
+RUN apt-get update && apt-get install -y vim procps nginx nodejs git sudo
 
 ADD https://api.github.com/repos/urbit/urbit-bitcoin-rpc/git/refs/heads/master version.json
 RUN git clone -b master https://github.com/urbit/urbit-bitcoin-rpc.git urbit-bitcoin-rpc

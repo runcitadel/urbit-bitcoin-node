@@ -12,7 +12,7 @@ RUN git clone -b master https://github.com/urbit/urbit-bitcoin-rpc.git urbit-bit
 ADD /rpc/mainnet-start.sh /mainnet-start.sh
 ADD /rpc/server.js /src/server.js
 ADD nginx.conf /etc/nginx/conf.d/nginx.conf
-RUN cp /urbit-bitcoin-rpc/* /
+RUN cp -r /urbit-bitcoin-rpc/. /
 
 RUN npm install express
 RUN npm audit fix

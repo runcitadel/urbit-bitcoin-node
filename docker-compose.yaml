@@ -7,6 +7,7 @@ services:
     stop_grace_period: 1m
     ports:
       - 55555:50002
+      - 9090:9090
     environment:
       ELECTRUM_IP: $ELECTRUM_IP
       ELECTRUM_PORT: $ELECTRUM_PORT

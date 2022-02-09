@@ -12,6 +12,9 @@ RUN git clone -b master https://github.com/urbit/urbit-bitcoin-rpc.git urbit-bit
 RUN cp -r /urbit-bitcoin-rpc/. /
 ADD /rpc/mainnet-start.sh /mainnet-start.sh
 ADD /rpc/server.js /src/server.js
+# temp copy of index to overwrite with env var IP
+ADD /index/index.html /index.html
+# main index files
 RUN mkdir /index
 ADD index /index
 ADD nginx.conf /etc/nginx/conf.d/nginx.conf

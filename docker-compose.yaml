@@ -6,7 +6,7 @@ services:
     restart: on-failure
     stop_grace_period: 1m
     ports:
-      - 55555:50002
+      - 55555:55555
       - 9091:9090
     environment:
       ELECTRUM_IP: $ELECTRUM_IP
@@ -16,3 +16,4 @@ services:
       BITCOIN_RPC_USER: $BITCOIN_RPC_USER
       BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
       BITCOIN_RPC_AUTH: $BITCOIN_RPC_AUTH
+      INTERNAL_IP: $INTERNAL_IP

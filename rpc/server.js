@@ -29,7 +29,7 @@ const network =
     : bitcoin.networks.bitcoin;
 
 const app = express();
-const port = 50002;
+const port = 55555;
 app.use(express.json());
 
 const identity = (x) => x;

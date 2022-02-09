@@ -1,10 +1,9 @@
-FROM debian:buster-slim
+FROM node:16-bullseye-slim
+
 ARG UID=1000
 ARG GID=1000
-ARG username=umbrel
-RUN apt-get update && apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash 
-RUN apt-get update && apt-get install -y vim procps nginx nodejs git sudo
+ARG username=citadel
+RUN apt-get update && apt-get install -y curl vim procps nginx git sudo
 
 ADD https://api.github.com/repos/urbit/urbit-bitcoin-rpc/git/refs/heads/master version.json
 RUN git clone -b master https://github.com/urbit/urbit-bitcoin-rpc.git urbit-bitcoin-rpc

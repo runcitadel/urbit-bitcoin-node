@@ -24,7 +24,7 @@ RUN npm audit fix
 
 USER $USERNAME
 
-EXPOSE 50002
+EXPOSE 55555
 EXPOSE 9090
 
 ENTRYPOINT ["/mainnet-start.sh"]

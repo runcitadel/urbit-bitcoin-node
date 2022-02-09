@@ -1,4 +1,4 @@
-# Umbrel %btc-provider node 
+# Urbit Bitcoin Connector for Umbrel
 
 This image is a port of the self-contained [%btc-provider](https://github.com/wexpertsystems/urbit-bitcoin-node) image which acts as a backend for Urbit's Bitcoin wallet. This port is an app for [Umbrel](https://getumbrel.com/), a personal server project focused on crypto sovereignty.
 
@@ -8,7 +8,7 @@ The Docker Compose file is included for reference. Most importantly it imports e
 
 ### Installation
 
-Make a file on your umbrel called `~/umbrel/apps/urbit-btc-node/docker-compose.yml`
+Make a file on your umbrel called `~/umbrel/apps/urbit-bitcoin-connector/docker-compose.yml`
 
 Paste the following into it:
 
@@ -21,15 +21,15 @@ services:
     restart: on-failure
     stop_grace_period: 1m
     ports:
-      - 50002:50002
+      - 55555:50002
     environment:
-      $ELECTRUM_IP: $ELECTRUM_IP
-      $ELECTRUM_PORT: $ELECTRUM_PORT
-      $BITCOIN_IP: $BITCOIN_IP
-      $BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
-      $BITCOIN_RPC_USER: $BITCOIN_RPC_USER
-      $BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
-      $BITCOIN_RPC_AUTH: $BITCOIN_RPC_AUTH
+      ELECTRUM_IP: $ELECTRUM_IP
+      ELECTRUM_PORT: $ELECTRUM_PORT
+      BITCOIN_IP: $BITCOIN_IP
+      BITCOIN_RPC_PORT: $BITCOIN_RPC_PORT
+      BITCOIN_RPC_USER: $BITCOIN_RPC_USER
+      BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
+      BITCOIN_RPC_AUTH: $BITCOIN_RPC_AUTH
 ```
 
 then: 

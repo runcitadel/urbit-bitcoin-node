@@ -15,7 +15,7 @@ export BITCOIN_RPC_AUTH=$BITCOIN_RPC_AUTH
 export BITCOIN_RPC_PASS=$BITCOIN_RPC_PASS
 export INTERNAL_IP=$INTERNAL_IP
 
-if [ -z "${INTERNAL_IP}"  ]
+if [ ! -z "${INTERNAL_IP}"  ]
 then
     cp index.html /index/index.html
     sed -i "s/local.ip.address.here/${INTERNAL_IP}/g" /index/index.html

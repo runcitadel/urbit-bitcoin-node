@@ -9,10 +9,10 @@ RUN apt-get update && apt-get install -y vim procps nginx nodejs git sudo
 ADD https://api.github.com/repos/urbit/urbit-bitcoin-rpc/git/refs/heads/master version.json
 RUN git clone -b master https://github.com/urbit/urbit-bitcoin-rpc.git urbit-bitcoin-rpc
 
+RUN cp -r /urbit-bitcoin-rpc/. /
 ADD /rpc/mainnet-start.sh /mainnet-start.sh
 ADD /rpc/server.js /src/server.js
 ADD nginx.conf /etc/nginx/conf.d/nginx.conf
-RUN cp -r /urbit-bitcoin-rpc/. /
 
 RUN npm install express
 RUN npm audit fix

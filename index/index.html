@@ -99,8 +99,8 @@ pre code {
 		</ul>
 			<pre><code>dojo> |rein %bitcoin [& %btc-provider]
 dojo> =network %main
-dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://host.docker.internal:55555' network]</code></pre>
-		You should see a new block announcement in the dojo. (If your ship is on another host, change the URL to its IP address.)</p>
+dojo> :btc-provider +bitcoin!btc-provider/command [%set-credentials api-url='http://local.ip.address.here:55555' network]</code></pre>
+            Use the <i>local/private</i> IP address of your Umbrel for the third command if your ship is running on your Umbrel. You should see a new block announcement in the dojo. If your ship is on another host, change the URL to its IP address.</p>
 		<p><ul><li>Next, go to your Bitcoin wallet in your Urbit's web UI.</li>
 			<li>Configure your provider by entering the @p (ship name) of the provider you just configured.</li>
 			<li>Enter your xPub from <a href="https://bridge.urbit.org">Bridge</a> or an <a href="https://blog.blockonomics.co/how-to-find-your-xpub-key-with-these-8-popular-bitcoin-wallets-ce8ea665ffdc">external wallet</a>.

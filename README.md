@@ -17,11 +17,11 @@ version: "3.7"
 
 services:
   web:
-    image: matwet/urbit-btc-node:staging
+    image: matwet/urbit-btc-node:latest
     restart: on-failure
     stop_grace_period: 1m
     ports:
-      - 55555:50002
+      - 55555:55555
     environment:
       ELECTRUM_IP: $ELECTRUM_IP
       ELECTRUM_PORT: $ELECTRUM_PORT
@@ -30,6 +30,7 @@ services:
       BITCOIN_RPC_USER: $BITCOIN_RPC_USER
       BITCOIN_RPC_PASS: $BITCOIN_RPC_PASS
       BITCOIN_RPC_AUTH: $BITCOIN_RPC_AUTH
+      INTERNAL_IP: $INTERNAL_IP
 ```
 
 then: 
